@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jakeb Gutierrez — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#15161E;        /* dark indigo, dracula-leaning */
+    --ink:#EAEBF2;
+    --muted:#9298AB;
+    --faint:#5C6178;
+    --line:#262939;
+    --accent:#9AA8E8;    /* muted periwinkle */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Instrument Sans',sans-serif;
+    font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+
+  .grid{
+    display:grid;
+    grid-template-columns:minmax(300px,380px) 1fr;
+    gap:6vw;
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 32px;
+    min-height:100vh;
+  }
+
+  /* left column */
+  .side{
+    position:sticky;top:0;align-self:start;
+    height:100vh;
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:9vh 0 7vh;
+  }
+  .name{
+    font-weight:600;
+    font-size:clamp(1.9rem,3.4vw,2.5rem);
+    letter-spacing:-0.02em;
+    line-height:1.08;
+  }
+  .position{
+    margin-top:1.2rem;color:var(--muted);
+    font-size:1rem;max-width:30ch;
+  }
+  .side-meta{font-family:'IBM Plex Mono',monospace;color:var(--faint);font-size:.78rem;letter-spacing:.06em}
+  .contact{display:flex;flex-direction:column;gap:.55rem;margin-bottom:2.4rem}
+  .contact a{
+    color:var(--muted);font-size:.92rem;width:fit-content;
+    border-bottom:1px solid var(--line);padding-bottom:1px;
+    transition:color .2s,border-color .2s;
+  }
+  .contact a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* right column */
+  .work{padding:9vh 0 10vh}
+  .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:1.2rem;
+  }
+  .entry{border-top:1px solid var(--line)}
+  .entry:last-of-type{border-bottom:1px solid var(--line)}
+  .entry-head{
+    width:100%;background:none;border:none;cursor:pointer;
+    display:grid;grid-template-columns:1fr auto auto;align-items:baseline;gap:1.4rem;
+    padding:1.5rem 0;color:var(--ink);font:inherit;text-align:left;
+  }
+  .entry-title{font-size:1.28rem;font-weight:500;letter-spacing:-.01em;transition:color .2s}
+  .entry-head:hover .entry-title{color:var(--accent)}
+  .entry-kind{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--faint);font-size:.74rem;letter-spacing:.06em;white-space:nowrap;
+  }
+  .entry-toggle{
+    color:var(--faint);font-size:1.1rem;line-height:1;
+    transition:transform .3s ease,color .2s;
+  }
+  .entry.open .entry-toggle{transform:rotate(45deg);color:var(--accent)}
+
+  .entry-body{
+    display:grid;grid-template-rows:0fr;
+    transition:grid-template-rows .38s cubic-bezier(.32,.72,.28,1);
+  }
+  .entry.open .entry-body{grid-template-rows:1fr}
+  .entry-inner{overflow:hidden}
+  .entry-inner-pad{padding:0 0 2rem;max-width:56ch}
+  .entry-inner p{color:var(--muted);font-size:.97rem}
+  .stack{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--faint);font-size:.74rem;letter-spacing:.03em;
+    margin-top:1.1rem;
+  }
+  .links{margin-top:1.4rem;display:flex;gap:1.5rem}
+  .links a{
+    font-size:.88rem;color:var(--ink);
+    border-bottom:1px solid var(--accent);padding-bottom:2px;
+    transition:color .2s;
+  }
+  .links a:hover{color:var(--accent)}
+  .note{margin-top:1.4rem;color:var(--faint);font-size:.82rem;font-style:italic}
+
+  /* experience strip */
+  .exp{margin-top:7rem}
+  .exp-row{
+    display:grid;grid-template-columns:auto 1fr;gap:1.6rem;
+    padding:1.1rem 0;border-top:1px solid var(--line);
+    align-items:baseline;
+  }
+  .exp-row:last-child{border-bottom:1px solid var(--line)}
+  .exp-when{font-family:'IBM Plex Mono',monospace;color:var(--faint);font-size:.74rem;white-space:nowrap}
+  .exp-what{color:var(--muted);font-size:.92rem}
+  .exp-what strong{color:var(--ink);font-weight:500}
+
+  /* entrance */
+  @media (prefers-reduced-motion:no-preference){
+    .rise{opacity:0;transform:translateY(12px);animation:rise .7s ease forwards}
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .entry-body,.entry-toggle{transition:none}
+  }
+
+  @media (max-width:800px){
+    .grid{grid-template-columns:1fr;gap:0}
+    .side{position:static;height:auto;padding:10vh 0 0;gap:3rem}
+    .side-bottom{display:none}
+    .work{padding:5rem 0 10vh}
+  }
+</style>
+</head>
+<body>
+
+<div class="grid">
+  <aside class="side">
+    <div class="rise d1">
+      <h1 class="name">Jakeb<br>Gutierrez</h1>
+      <p class="position">Software engineer — LLM agent systems, MCP integrations, async Python.</p>
+    </div>
+    <div class="side-bottom rise d2">
+      <nav class="contact" aria-label="Contact">
+        <a href="mailto:mail@jakebgutierrez.com">mail@jakebgutierrez.com</a>
+        <a href="https://github.com/JakebGutierrez">GitHub</a>
+        <a href="https://www.linkedin.com/in/jakebgutierrez">LinkedIn</a>
+        <a href="#">Resume</a>
+      </nav>
+      <div class="side-meta">Sydney, Australia</div>
+    </div>
+  </aside>
+
+  <main class="work">
+    <p class="label rise d2">Selected work</p>
+
+    <div class="rise d3">
+      <div class="entry">
+        <button class="entry-head" aria-expanded="false">
+          <span class="entry-title">Mana Chart</span>
+          <span class="entry-kind">web app / live</span>
+          <span class="entry-toggle">+</span>
+        </button>
+        <div class="entry-body"><div class="entry-inner"><div class="entry-inner-pad">
+          <p>A web app where Magic: The Gathering players build custom grids of card artwork and export them as shareable images. Live in production with real users — card search, drag-and-drop layout, and high-resolution image export, built against the Scryfall API.</p>
+          <p class="stack">React · TypeScript · Scryfall API · canvas export · Vercel</p>
+          <div class="links"><a href="https://mtgchart.com" target="_blank" rel="noopener">Visit site</a><a href="https://github.com/JakebGutierrez/mtg-chart" target="_blank" rel="noopener">Source</a></div>
+        </div></div></div>
+      </div>
+
+      <div class="entry">
+        <button class="entry-head" aria-expanded="false">
+          <span class="entry-title">WobbleMIDI</span>
+          <span class="entry-kind">audio tool</span>
+          <span class="entry-toggle">+</span>
+        </button>
+        <div class="entry-body"><div class="entry-inner"><div class="entry-inner-pad">
+          <p>A drum-MIDI humaniser. Programmed drums are quantised and lifeless — WobbleMIDI adds statistically modelled timing and velocity, sampling per-hit deltas over a slowly drifting groove so the result pushes and pulls like a real drummer.</p>
+          <p class="stack">Python · statistical modelling · MIDI · desktop GUI</p>
+          <div class="links"><a href="https://github.com/JakebGutierrez/wobblemidi" target="_blank" rel="noopener">Source</a></div>
+        </div></div></div>
+      </div>
+
+      <div class="entry">
+        <button class="entry-head" aria-expanded="false">
+          <span class="entry-title">Agent Systems</span>
+          <span class="entry-kind">case study</span>
+          <span class="entry-toggle">+</span>
+        </button>
+        <div class="entry-body"><div class="entry-inner"><div class="entry-inner-pad">
+          <p>Async Python agent connecting a locally hosted LLM to a SIEM through MCP: a natural-language investigation query goes in, typed and structured results come out. Shipped into a shared agent platform behind a feature flag for safe rollout, with full async test coverage.</p>
+          <p class="stack">Python · asyncio · MCP · Pydantic · pytest</p>
+          <p class="note">Built in a secure environment — happy to share more context in conversation.</p>
+        </div></div></div>
+      </div>
+
+      <section class="exp" aria-label="Experience">
+        <p class="label">Experience</p>
+        <div class="exp-row">
+          <span class="exp-when">2025 —</span>
+          <span class="exp-what"><strong>Graduate Engineer, Department of Defence</strong> — agent systems &amp; MCP integration, AI/ML research pipelines, engineering data platforms.</span>
+        </div>
+        <div class="exp-row">
+          <span class="exp-when">2017 – 22</span>
+          <span class="exp-what"><strong>B.E. Software, UTS</strong> — with Diploma in Professional Engineering Practice.</span>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.entry-head').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const entry = btn.closest('.entry');
+    const open = entry.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+});
+</script>
+</body>
+</html>

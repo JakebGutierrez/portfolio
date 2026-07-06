@@ -1,0 +1,65 @@
+:root {
+  --bg: #15161E;      /* dark indigo */
+  --ink: #EAEBF2;
+  --muted: #9298AB;
+  --faint: #5C6178;
+  --line: #262939;
+  --accent: #9AA8E8;  /* muted periwinkle */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* temporary scaffold-check styles — replaced by the real page in Phase 2 */
+.scaffold-check {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.scaffold-check h1 {
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.scaffold-mono {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--faint);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  margin-top: 1.2rem;
+}
