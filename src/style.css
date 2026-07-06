@@ -273,7 +273,9 @@ button:focus-visible {
 /* entrance */
 @media (prefers-reduced-motion: no-preference) {
   .rise {
-    opacity: 0;
+    /* .01 not 0: text at opacity 0 never registers a contentful paint,
+       which voids FCP/LCP for Lighthouse and real-user metrics alike */
+    opacity: .01;
     transform: translateY(12px);
     animation: rise .7s ease forwards;
   }
