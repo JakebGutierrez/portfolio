@@ -182,6 +182,14 @@ button:focus-visible {
 
 .entry-inner {
   overflow: hidden;
+  /* keeps links in collapsed entries out of the tab order; the transition
+     delays the flip so it tracks the .38s collapse */
+  visibility: hidden;
+  transition: visibility .38s;
+}
+
+.entry.open .entry-inner {
+  visibility: visible;
 }
 
 .entry-inner-pad {
@@ -284,6 +292,7 @@ button:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .entry-body,
+  .entry-inner,
   .entry-toggle {
     transition: none;
   }
