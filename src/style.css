@@ -2,7 +2,7 @@
   --bg: #15161E;      /* dark indigo */
   --ink: #EAEBF2;
   --muted: #9298AB;
-  --faint: #5C6178;
+  --faint: #7C829B; /* brightened from mockup's #5C6178 to pass WCAG AA 4.5:1 */
   --line: #262939;
   --accent: #9AA8E8;  /* muted periwinkle */
 }
