@@ -6,10 +6,81 @@
     <title>Jakeb Gutierrez — Software Engineer</title>
   </head>
   <body>
-    <main class="scaffold-check">
-      <h1>Jakeb Gutierrez</h1>
-      <p class="scaffold-mono">scaffold check — tokens &amp; self-hosted fonts</p>
-    </main>
+    <div class="grid">
+      <aside class="side">
+        <header class="rise d1">
+          <h1 class="name">Jakeb<br />Gutierrez</h1>
+          <p class="position">Software engineer — LLM agent systems, MCP integrations, async Python.</p>
+        </header>
+        <div class="side-bottom rise d2">
+          <nav class="contact" aria-label="Contact">
+            <a href="mailto:mail@jakebgutierrez.com">mail@jakebgutierrez.com</a>
+            <a href="https://github.com/JakebGutierrez" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/jakeb-gutierrez/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+          </nav>
+          <div class="side-meta">Sydney, Australia</div>
+        </div>
+      </aside>
+
+      <main class="work">
+        <p class="label rise d2">Selected work</p>
+
+        <div class="rise d3">
+          <div class="entry">
+            <button class="entry-head" aria-expanded="false">
+              <span class="entry-title">Mana Chart</span>
+              <span class="entry-kind">web app / live</span>
+              <span class="entry-toggle">+</span>
+            </button>
+            <div class="entry-body"><div class="entry-inner"><div class="entry-inner-pad">
+              <p>A web app where Magic: The Gathering players build custom grids of card artwork and export them as shareable images. Live in production with real users — card search, drag-and-drop layout, and high-resolution image export, built against the Scryfall API.</p>
+              <p class="stack">React · TypeScript · Scryfall API · canvas export · Vercel</p>
+              <div class="links"><a href="https://mtgchart.com" target="_blank" rel="noopener">Visit site</a><a href="https://github.com/JakebGutierrez/mtg-chart" target="_blank" rel="noopener">Source</a></div>
+            </div></div></div>
+          </div>
+
+          <div class="entry">
+            <button class="entry-head" aria-expanded="false">
+              <span class="entry-title">WobbleMIDI</span>
+              <span class="entry-kind">audio tool</span>
+              <span class="entry-toggle">+</span>
+            </button>
+            <div class="entry-body"><div class="entry-inner"><div class="entry-inner-pad">
+              <p>A drum-MIDI humaniser. Programmed drums are quantised and lifeless — WobbleMIDI adds statistically modelled timing and velocity, sampling per-hit deltas over a slowly drifting groove so the result pushes and pulls like a real drummer.</p>
+              <p class="stack">Python · statistical modelling · MIDI · desktop GUI</p>
+              <div class="links"><a href="https://github.com/JakebGutierrez/wobblemidi" target="_blank" rel="noopener">Source</a></div>
+            </div></div></div>
+          </div>
+
+          <div class="entry">
+            <button class="entry-head" aria-expanded="false">
+              <span class="entry-title">Agent Systems</span>
+              <span class="entry-kind">case study</span>
+              <span class="entry-toggle">+</span>
+            </button>
+            <div class="entry-body"><div class="entry-inner"><div class="entry-inner-pad">
+              <p>Async Python agent connecting a locally hosted LLM to a SIEM through MCP: a natural-language investigation query goes in, typed and structured results come out. Shipped into a shared agent platform behind a feature flag for safe rollout, with full async test coverage.</p>
+              <p class="stack">Python · asyncio · MCP · Pydantic · pytest</p>
+              <p class="note">Built in a secure environment — happy to share more context in conversation.</p>
+            </div></div></div>
+          </div>
+
+          <section class="exp" aria-label="Experience">
+            <p class="label">Experience</p>
+            <div class="exp-row">
+              <span class="exp-when">2025 —</span>
+              <span class="exp-what"><strong>Graduate Engineer, Department of Defence</strong> — agent systems &amp; MCP integration, AI/ML research pipelines, engineering data platforms.</span>
+            </div>
+            <div class="exp-row">
+              <span class="exp-when">2017 – 22</span>
+              <span class="exp-what"><strong>B.E. Software, UTS</strong> — with Diploma in Professional Engineering Practice.</span>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
