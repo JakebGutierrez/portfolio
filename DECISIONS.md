@@ -29,6 +29,18 @@ needs 4.5:1 (WCAG AA). Approved deviation from the mockup.
 It is a reserved slot for a future WebGL/Three.js centrepiece (v2). Do not
 fill it or "fix" it.
 
+## No resume link
+
+The brief specified a Resume contact link (`/resume.pdf`), but it was removed
+on 2026-07-08 at the owner's request — email and LinkedIn suffice. Don't
+re-add it from the brief.
+
+## Mana Chart lives at manachart.app
+
+The brief's URLs (mtgchart.com, github.com/JakebGutierrez/mtg-chart) are
+outdated: the site moved to https://manachart.app and the repo was renamed
+to `manachart` (2026-07-08).
+
 ## Fonts are self-hosted (no Google CDN)
 
 Privacy, performance, and no layout shift. The ~99 Lighthouse performance

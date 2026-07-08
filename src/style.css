@@ -1,4 +1,12 @@
+/* fonts load via the stylesheet, not the JS entry — earlier discovery,
+   no FOUT (see DECISIONS.md) */
+@import '@fontsource/instrument-sans/400.css';
+@import '@fontsource/instrument-sans/500.css';
+@import '@fontsource/instrument-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+
 :root {
+  color-scheme: dark;
   --bg: #15161E;      /* dark indigo */
   --ink: #EAEBF2;
   --muted: #9298AB;
@@ -46,6 +54,7 @@ button:focus-visible {
   margin: 0 auto;
   padding: 0 32px;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* left column */
@@ -54,6 +63,7 @@ button:focus-visible {
   top: 0;
   align-self: start;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -109,6 +119,7 @@ button:focus-visible {
 
 .label {
   font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400; /* h2.label must not pick up the UA bold */
   font-size: .7rem;
   letter-spacing: .2em;
   text-transform: uppercase;
@@ -122,6 +133,12 @@ button:focus-visible {
 
 .entry:last-of-type {
   border-bottom: 1px solid var(--line);
+}
+
+.entry-h {
+  /* heading wrapper exists for the document outline only; the button
+     inherits its font, so neutralise the UA heading styles */
+  font: inherit;
 }
 
 .entry-head {
@@ -268,6 +285,24 @@ button:focus-visible {
 .exp-what strong {
   color: var(--ink);
   font-weight: 500;
+}
+
+/* no JS (class removed by the inline head script): entries render open
+   so content is never unreachable */
+.no-js .entry-head {
+  cursor: default;
+}
+
+.no-js .entry-toggle {
+  display: none;
+}
+
+.no-js .entry-body {
+  grid-template-rows: 1fr;
+}
+
+.no-js .entry-inner {
+  visibility: visible;
 }
 
 /* entrance */
